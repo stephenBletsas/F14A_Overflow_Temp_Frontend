@@ -10,6 +10,9 @@ const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
 
+// render - search Company
+const Company = Loadable(lazy(() => import('pages/company/Company')));
+
 // render - utilities
 const Typography = Loadable(lazy(() => import('pages/components-overview/Typography')));
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
@@ -23,8 +26,12 @@ const MainRoutes = {
   element: <MainLayout />,
   children: [
     {
-      path: '/',
+      path: '/home',
       element: <DashboardDefault />
+    },
+    {
+      path: 'company/:query',
+      element: <Company />
     },
     {
       path: 'color',
