@@ -6,7 +6,6 @@ import { useTheme } from '@mui/material/styles';
 import {
   Avatar,
   Box,
-  ButtonBase,
   CardContent,
   ClickAwayListener,
   Grid,
@@ -62,9 +61,6 @@ const Profile = () => {
 
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -79,28 +75,9 @@ const Profile = () => {
     setValue(newValue);
   };
 
-  const iconBackColorOpen = 'grey.300';
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>
-      <ButtonBase
-        sx={{
-          p: 0.25,
-          bgcolor: open ? iconBackColorOpen : 'transparent',
-          borderRadius: 1,
-          '&:hover': { bgcolor: 'secondary.lighter' }
-        }}
-        aria-label="open profile"
-        ref={anchorRef}
-        aria-controls={open ? 'profile-grow' : undefined}
-        aria-haspopup="true"
-        onClick={handleToggle}
-      >
-        <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-          <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-          <Typography variant="subtitle1">John Doe</Typography>
-        </Stack>
-      </ButtonBase>
       <Popper
         placement="bottom-end"
         open={open}
